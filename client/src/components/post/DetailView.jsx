@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material"
 import { makeStyles } from "@material-ui/core"
 import { Edit , Delete } from '@material-ui/icons'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState , useEffect} from 'react'
-import { getPost } from '../../service/api'
+import { getPost , deletePost } from '../../service/api'
 import { useParams } from "react-router-dom"
 const useStyle = makeStyles((theme)=>({
     container: {
@@ -45,9 +45,11 @@ const useStyle = makeStyles((theme)=>({
 }));
 
 const DetailView = ({ match })=> {
+    const img = 'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80'
+  
     const classes = useStyle();
     const { id } = useParams();
-    const img = 'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80'
+    const Navigate = useNavigate();
 
     const [post, setPost] = useState({});
 
@@ -59,19 +61,24 @@ const DetailView = ({ match })=> {
         }
         fetchData();
     }, []);
+
+    const deleteBlog = async () =>{
+        await deletePost(post._id);
+        Navigate('/');
+    }
     return (
         <Box className={classes.container}>
-            <img src={img} alt="" className={classes.image} />
+            <img src={ post.picture || img} alt="" className={classes.image} />
             <Box className={classes.icons} >
-            <Link to='/update'><Edit  className={classes.icon} color='primary'></Edit></Link>
-            <Delete className={classes.icon} color='error'></Delete>
+            <Link to={`/update/${post._id}`}><Edit  className={classes.icon} color='primary'></Edit></Link>
+            <Delete onClick={()=> deleteBlog()} className={classes.icon} color='error'></Delete>
             </Box>
             <Box>
             <p className={classes.heading}>{post.title}</p>
             </Box>
             <Box className={classes.authDetail}>
                 <Typography className={classes.author}> Author: <span className={classes.authName}>{post.username}</span></Typography>
-                <Typography className={classes.dateCreated} style={{marginLeft:'auto'}}>12 Jun 2021</Typography>
+                <Typography className={classes.dateCreated} style={{marginLeft:'auto'}}>{new Date(post.createDate).toDateString()}</Typography>
             </Box>
             <Box className={classes.description}>{post.discription}</Box>
 

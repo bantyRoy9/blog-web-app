@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true}))
 app.use('/',Router)
 
 
-const POST = 8000;
+const PORT = 8000;
 
-app.listen (POST, ()=>console.log(`server is running successfully on port ${POST}`));
+app.listen (PORT, ()=>console.log(`server is running successfully on port ${PORT}`));
 
 DBconnection();

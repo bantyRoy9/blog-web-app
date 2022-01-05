@@ -16,11 +16,11 @@ const PostSchema = mongooes.Schema({
     },
     username:{
         type: String,
-        required:false
+        required:true
     },
     categories:{
         type:String,
-        required:false
+        required:true
     },
     createDate:{
         type:Date,
