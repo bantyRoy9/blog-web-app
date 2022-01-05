@@ -1,16 +1,20 @@
+import multer from 'multer';
+import { GridFsStorage } from 'multer-gridfs-storage'
 
-const url = 'http://localhost:8000'
-const uploadImage = async ( req , res) =>{
-    try{
-    if(!req.file){
-        return res.status(404).json('file not found');
+const storage = new GridFsStorage({
+    url:'mongodb+srv://user:12345@cluster0.ustvu.mongodb.net/BLOG_WEB?retryWrites=true&w=majority',
+    options: { useNewUrlParser: true, useUnifiedTopology: true},
+    file:( req , file) => {
+        const match = ["image/png" , "image/jpg"];
+
+        if(match.indexOf(file.memeType) === -1){
+            return `${Date.now()}-blog-${file.originalname}`;
+        }
+        return {
+            bucketName:"photos",
+            filename:`${Date.now()}-blog-${file.originalname}`
+        }
     }
-    const imageURL = `${url}/file/${req.file.filename}`
+})
 
-    res.status(200).json(imageURL)
-    }catch(err){
-        res.status(500).json(err)
-    }
-}
-
-export default uploadImage
+export default multer({ storage })

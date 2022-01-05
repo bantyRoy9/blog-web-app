@@ -56,12 +56,16 @@ const CreatePost=()=> {
 
     useEffect(()=>{
         const getImage = async() =>{
+            console.log(file);
+            if(file){
             const data = new FormData();
             data.append("name", file.name);
-            data.append('file', file)
+            data.append('file', file);
 
-            await uploadFile(data);
+            const image = await uploadFile(data);
+            post.picture = image.data;
         }
+    }
         getImage();
     },[file])
 
