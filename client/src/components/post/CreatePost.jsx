@@ -42,8 +42,8 @@ const initialize = {
     title:'',
     discription:'',
     picture:'',
-    username:'Code for interview',
-    categories:'All',
+    username:'Code through Banty',
+    categories:'Music',
     createDate: new Date(),
     
 }
