@@ -1,8 +1,8 @@
 // import {  } from "@mui/material"
 import { makeStyles,Box, FormControl, InputBase , Button, TextareaAutosize} from "@material-ui/core";
 import {  AddCircle } from '@material-ui/icons';
-import { useState } from "react";
-import { createPost } from "../../service/api";
+import { useState, useEffect } from "react";
+import { createPost, uploadFile } from "../../service/api";
 import { useNavigate } from 'react-router-dom';
 const useStyle = makeStyles((theme)=>({
     container: {
@@ -52,6 +52,18 @@ const CreatePost=()=> {
     const img = 'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80'
     const navigation = useNavigate();
     const [post, setPost]= useState(initialize);
+    const [file, setFile]= useState('');
+
+    useEffect(()=>{
+        const getImage = async() =>{
+            const data = new FormData();
+            data.append("name", file.name);
+            data.append('file', file)
+
+            await uploadFile(data);
+        }
+        getImage();
+    },[file])
 
     const changehandler = (e)=>{
         setPost({...post, [e.target.name]: e.target.value})
@@ -64,7 +76,15 @@ const CreatePost=()=> {
         <Box className={classes.container}>
             <img src={img} alt="" className={classes.image} />
            <FormControl className={classes.form}>
+                <label htmlFor="fileImg">
                <AddCircle fontSize='large' color="action"/>
+               </label>
+               <input 
+                  type="file" 
+                  id="fileImg"
+                  style={{display:'none', cursor:"pointer"}}
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
                <InputBase 
                 onChange={(e)=> changehandler(e)}
                 placeholder="Title" 

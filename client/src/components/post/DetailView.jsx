@@ -74,8 +74,8 @@ const DetailView = ({ match })=> {
         <Box className={classes.container}>
             <img src={ post.picture || img} alt="" className={classes.image} />
             <Box className={classes.icons} >
-            <Link to={`/update/${post._id}`}><Edit  className={classes.icon} color='primary'></Edit></Link>
-            <Delete onClick={()=> deleteBlog()} className={classes.icon} color='error'></Delete>
+                <Link to={`/update/${post._id}`}><Edit  className={classes.icon} color='primary'></Edit></Link>
+                <Delete onClick={()=> deleteBlog()} className={classes.icon} color='error'></Delete>
             </Box>
             <Box>
             <p className={classes.heading}>{post.title}</p>
