@@ -1,7 +1,8 @@
 import React from 'react'
 import { AppBar , Toolbar , Typography} from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
+import { useOktaAuth } from '@okta/okta-react';
 
 const useStyle = makeStyles({
     nav:{
@@ -18,6 +19,17 @@ const useStyle = makeStyles({
 });
 const Header=()=> {
     const classes = useStyle();
+    const history = useNavigate();
+    const { oktaAuth, authState } = useOktaAuth();
+
+    
+  const login = async () => history.push('/login');
+
+  const logout = async () => oktaAuth.signOut();
+
+    const button = authState.isAuthenticated ?
+    <button onClick={logout}>Logout</button> :
+    <button onClick={login}>Login</button>;
     return (
         <AppBar>
             <Toolbar className={classes.nav}>
