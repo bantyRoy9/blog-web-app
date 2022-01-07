@@ -22,8 +22,9 @@ const Header=()=> {
     const history = useNavigate();
     const { oktaAuth, authState } = useOktaAuth();
 
-    
-  const login = async () => history.push('/login');
+    if (authState && authState.isPending) return null;
+
+  const login = async () => history('/login');
 
   const logout = async () => oktaAuth.signOut();
 
@@ -36,7 +37,7 @@ const Header=()=> {
               <Link to="/"><Typography className={classes.navLink}>Home</Typography></Link>
                 <Typography className={classes.navLink}>Contact</Typography>
                 <Typography className={classes.navLink}>About</Typography>
-                <Typography className={classes.navLink}>Home</Typography>
+                <Typography className={classes.navLink}>{button}</Typography>
             </Toolbar>
         </AppBar>
     )

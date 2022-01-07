@@ -8,7 +8,7 @@ const oktaAuthConfig = {
   };
   
   const oktaSignInConfig = {
-    baseUrl: 'https://${yourOktaDomain}',
+    baseUrl: 'https://dev-57348179.okta.com/oauth2/default',
     clientId: '0oa3io6yfylkvKF2C5d7',
     redirectUri: window.location.origin + '/login/callback',
     authParams: {
