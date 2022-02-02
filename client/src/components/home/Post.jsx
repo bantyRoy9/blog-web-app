@@ -9,7 +9,7 @@ const useStyle = makeStyles({
         borderRadius: 10,
         display:'flex',
         flexDirection:'column',
-        alignItems:'center',
+        background:'whitesmoke'
     },
     image : {
         height : 130,
@@ -19,15 +19,31 @@ const useStyle = makeStyles({
     },
     title: {
         fontSize: 12,
-        color: '#878787'
+        color: '#878787',
+        textAlign:'center'
+
     },
     heading: {
         fontSize: 18,
-        overflow:'hidden',
-        wordBreak:'break-word',
-        textAlign:'center'
+        textAlign:'center',
+        fontWeight:'bolder'
         
-    } 
+    } ,
+    auther:{
+        fontSize:14,
+        margin:'2px'
+
+    },
+    description:{
+        overflow:'scroll',
+        overflowX:'hidden',
+        scrollbarWidth:'1px'
+        // wordBreak:'break-word',
+    },
+    des:{
+        fontSize:'12px'
+    }
+
 
 
 });
@@ -41,8 +57,8 @@ const Post = ({post}) => {
             <img src={img} alt="Post"  className={classes.image}/>
             <Typography className={classes.title}>{post.categories}</Typography>
             <Typography className={classes.heading}>{post.title}</Typography>
-            <Typography className={classes.title}>Auther:{post.username}</Typography>
-            <Typography className={classes.heading}>Discription: <br /> {post.discription}</Typography>
+            <Typography className={classes.auther}>Auther  ::   {post.username}</Typography>
+            <Typography className={classes.description}>Description :<p className={classes.des}> {post.discription}</p></Typography>
         </Box>
     )
 }

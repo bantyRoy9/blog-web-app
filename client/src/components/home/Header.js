@@ -1,8 +1,8 @@
 import React from 'react'
 import { AppBar , Toolbar , Typography} from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { Link , useNavigate } from 'react-router-dom';
-import { useOktaAuth } from '@okta/okta-react';
+import { Link  } from 'react-router-dom';
+// import { useOktaAuth } from '@okta/okta-react';
 
 const useStyle = makeStyles({
     nav:{
@@ -19,25 +19,25 @@ const useStyle = makeStyles({
 });
 const Header=()=> {
     const classes = useStyle();
-    const history = useNavigate();
-    const { oktaAuth, authState } = useOktaAuth();
+    // const history = useNavigate();
+    // const { oktaAuth, authState } = useOktaAuth();
 
-    if (authState && authState.isPending) return null;
+    // if (authState && authState.isPending) return null;
 
-  const login = async () => history('/login');
+//   const login = async () => history('/login');
 
-  const logout = async () => oktaAuth.signOut();
+//   const logout = async () => oktaAuth.signOut();
 
-    const button = authState.isAuthenticated ?
-    <button onClick={logout}>Logout</button> :
-    <button onClick={login}>Login</button>;
+    // const button = authState.isAuthenticated ?
+    // <button onClick={logout}>Logout</button> :
+    // <button onClick={login}>Login</button>;
     return (
         <AppBar>
             <Toolbar className={classes.nav}>
               <Link to="/"><Typography className={classes.navLink}>Home</Typography></Link>
                 <Typography className={classes.navLink}>Contact</Typography>
                 <Typography className={classes.navLink}>About</Typography>
-                <Typography className={classes.navLink}>{button}</Typography>
+                <Typography className={classes.navLink}>signin</Typography>
             </Toolbar>
         </AppBar>
     )

@@ -3,8 +3,10 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
  image:{
-     background: `url(${'https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg'}) center/55% repeat-x #000`,
+     background: `url(${'https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg'}) center/25%  #000`,
      width:'100%',
+     backgroundRepeat:'repeat-x',
+     backgroundSize:'cover',
      height:'50vh',
      display:"flex",
      justifyContent:"center",
@@ -13,13 +15,14 @@ const useStyles = makeStyles({
      '& :first-child':{
          fontSize:68,
          color:'#FFFF',
+         textShadow:'2px 2px black'
         //  lineheight:'1'
      },
-     '& :last-child':{
-         fontSize:20,
-        //  padding:" 0 2rem",
-         background:'white'
-         }
+    //  '& :last-child':{
+    //      fontSize:20,
+    //     //  padding:" 0 2rem",
+    //      background:'white'
+    //      }
      }
  
 });
@@ -28,8 +31,8 @@ const Banner = () => {
     const classes = useStyles();
     return (
         <Box className={classes.image}>
-            <Typography>BLOG</Typography>
-            <Typography>Banty</Typography>
+            <Typography>Create Your Own BLOGs</Typography>
+            {/* <Typography>Banty</Typography> */}
         </Box>
     )
 }

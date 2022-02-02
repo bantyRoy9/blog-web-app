@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 // import {   } from '@mui/styles'
 import {categories} from '../../constant/categories'
 const useStyle = makeStyles({
-    button : {
-        padding:5,
+    buttons : {
+        top:5,
+        left:15,
         background: '#6495ED',
         color:'#fff',
         width: '86%',
@@ -25,7 +26,7 @@ const Categories = () =>{
     const classes = useStyle();
     return (
         <>
-         <Link to='/create'> <Button variant = "contained" className= {classes.button}>Create Blog</Button></Link> 
+         <Link to='/create'> <Button variant = "contained" className= {classes.buttons}>Create Blog</Button></Link> 
           <Table className={classes.table}>
               <TableHead>
                   <TableCell>

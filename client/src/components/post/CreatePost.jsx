@@ -41,9 +41,9 @@ const useStyle = makeStyles((theme)=>({
 const initialize = {
     title:'',
     discription:'',
-    picture:'',
-    username:'Code through Banty',
-    categories:'Music',
+    picture:'https://i.ibb.co/9cSYWp8/Screenshot-2022-02-02-230052.jpg',
+    username:'Banty09',
+    categories:'All',
     createDate: new Date(),
     
 }
