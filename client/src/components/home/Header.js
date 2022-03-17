@@ -37,7 +37,6 @@ const Header=()=> {
               <Link to="/"><p className={classes.navLink}>Home</p></Link>
                 <p className={classes.navLink}>Contact</p>
                 <p className={classes.navLink}>About</p>
-                <p className={classes.navLink}>signin</p>
             </Toolbar>
         </AppBar>
     )
