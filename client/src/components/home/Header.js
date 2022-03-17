@@ -34,10 +34,10 @@ const Header=()=> {
     return (
         <AppBar>
             <Toolbar className={classes.nav}>
-              <Link to="/"><Typography className={classes.navLink}>Home</Typography></Link>
-                <Typography className={classes.navLink}>Contact</Typography>
-                <Typography className={classes.navLink}>About</Typography>
-                <Typography className={classes.navLink}>signin</Typography>
+              <Link to="/"><p className={classes.navLink}>Home</p></Link>
+                <p className={classes.navLink}>Contact</p>
+                <p className={classes.navLink}>About</p>
+                <p className={classes.navLink}>signin</p>
             </Toolbar>
         </AppBar>
     )
